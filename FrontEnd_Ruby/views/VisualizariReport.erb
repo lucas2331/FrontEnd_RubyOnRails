@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> iReport de Usuarios </title>
+  </head>
+
+  <body>
+    <hr>
+    <h3> Visualizar iReport </h3>
+    <hr>
+
+<%
+    uri = URI('http://localhost:8080/ProjetoServlet/ServletReport')
+    enviaCodigo = Net::HTTP::Post.new(uri)
+    enviaCodigo.body = { }.to_json
+    res = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      http.request(enviaCodigo)
+    end
+%>
+    <button><a href="Index.erb"> Visualizar Relatório </a></button>
+  </body>
+</html>

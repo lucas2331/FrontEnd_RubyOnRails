@@ -1,0 +1,6 @@
+    <%=
+        url = 'http://localhost:8080/ProjetoServlet/ServletListar'
+        uri = URI(url)
+        response = Net::HTTP.get(uri)
+        $final = (response)
+    %>

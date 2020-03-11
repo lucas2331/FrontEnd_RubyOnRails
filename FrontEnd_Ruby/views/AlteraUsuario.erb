@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Altera Usuario </title>
+
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+  </head>
+  <body>
+    <div id="Cabeçalho">
+
+        <hr>
+        <h3>Altera Usuario</h3>
+
+        <button> <a href="Index.erb"> Início </a> </button>
+        <button> <a href="CadastroUsuario.erb"> Cadastro </a> </button>
+        <button> <a href="ExcluiUsuario.erb"> Exclui </a> </button>
+        <button> <a href="iReport.erb"> iReport </a> </button>
+        <button> <a href="Grid.erb"> Grid </a> </button>
+
+        <hr/>
+    </div>
+
+    <form id="Alterar" action="/AlteraUsuario2.rb" method="post">
+
+          <script>
+              function VerificaNumero(n) {
+                  if (n.which != 8 && n.which != 0 && (n.which < 48 || n.which > 57)) {
+                      return false;
+                  }
+              }
+              $(document).ready(function() {
+                  $("#CodUser").keypress(VerificaNumero);
+             });
+          </script>
+
+          <fieldset>
+            <table>
+              <legend><label for="NomeCalcula"> Alteraçãp </legend>
+
+                <tr>
+                  <td><label for="DigtCodigo"> Digite o Código: </label> </td>
+                  <td><input placeholder="Código" autocomplete="off" type="text" name="Altera[Codigo]" id="CodigoUser" size="8" maxlength="5" required /> </td>
+                </tr>
+
+                <tr>
+                  <td><label for="DigtNome">Digite seu novo Nome: </label> </td>
+                  <td><input placeholder="Nome" autocomplete="off" type="text" name="Altera[Nome]" id="NomeUser" size="8" maxlength="7" required /> </td>
+                </tr>
+
+                <tr>
+                  <td><label for="DigtSobrenome">Digite seu novo Sobrenome: </label> </td>
+                  <td><input placeholder="Sobrenome" autocomplete="off" type="text" name="Altera[Sobrenome]" id="SobrenomeUser" size="8" maxlength="7" required /> </td>
+                </tr>
+
+            </table>
+          </fieldset>
+
+          <fieldset>
+            <table>
+              <legend><label for="NomeCalcula"> Nova Data de Nascimento </legend>
+
+                <tr>
+                  <td><label for="DigtNumero2">Dia: </label> <input placeholder="Dia" autocomplete="off" type="text" name="Altera[Dia]" size="1" id="DiaUser" maxlength="2" required />
+
+                      <label for="DigtNumero2">Mês: </label><input placeholder="Mês" autocomplete="off" type="text" name="Altera[Mes]" size="1" id="MesUser" maxlength="2" required />
+
+                      <label for="DigtNumero2">Ano: </label><input placeholder="Ano" autocomplete="off" type="text" name="Altera[Ano]" size="1" id="AnoUser" maxlength="4" required />
+               </tr>
+
+          </table>
+        </fieldset>
+
+            <tr>
+              <td><input type="Submit" value="Enviar"></td>
+            </tr>
+          </table>
+        </form>
+
+    </div>
+  </body>
+</html>

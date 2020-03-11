@@ -1,0 +1,19 @@
+dev:
+  extends:
+    service: hello_world_ruby
+    file: ../../docker-compose.yml
+  volumes:
+    - .:/opt/services/hello-world-ruby
+  command: bash -c "bundle && foreman start"
+  build: .
+
+prod:
+  image: 394389787758.dkr.ecr.us-east-1.amazonaws.com/devbox/hello_world_ruby:latest
+  container_name: hello_world_ruby
+  hostname: hello_world_ruby
+  external_links:
+    - redis:redis
+  ports:
+    - '5000'
+  env_file:
+    - .env-example

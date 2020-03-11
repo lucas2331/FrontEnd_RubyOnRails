@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Lista Usuario </title>
+  </head>
+  <body>
+    <div id="Cabeçalho">
+        <h3> Lista Usuario </h3>
+
+        <button> <a href="Index.erb"> Início </a> </button>
+        <button> <a href="CadastroUsuario.erb"> Cadastro </a> </button>
+        <button> <a href="ExcluiUsuario.erb"> Exclui </a> </button>
+          <button> <a href="iReport.erb"> iReport </a> </button>
+        <button> <a href="Grid.erb"> Grid </a> </button>
+
+        <hr/>
+    </div>
+
+    <div id="Recebimento">
+
+      <%=
+        url = 'http://localhost:8080/ProjetoServlet/ServletListar'
+        uri = URI(url)
+        response = Net::HTTP.get(uri)
+        $final = (response)
+      %>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,205 @@
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title> Ruby - iReport Gerado </title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+    <!-- Styles -->
+    <style>
+
+          html, body {
+              background-color: #fff;
+              color: #636b6f;
+
+              font-family: 'Nunito', sans-serif;
+              font-weight: 200;
+
+              height: 100vh;
+              margin: 0;
+          }
+
+          * {
+            box-sizing: border-box;
+          }
+
+          .full-height {
+              height: 40vh;
+          }
+
+          .flex-center {
+              align-items: center;
+              display: grid;
+              justify-content: center;
+          }
+
+          .position-ref {
+              position: relative;
+          }
+
+          .top-right {
+              position: absolute;
+              right: 10px;
+              top: 30px;
+          }
+
+          .content {
+              padding: 0;
+              top: 0;
+              text-align: center;
+          }
+
+          .title {
+              font-size: 84px;
+          }
+
+          .links > a {
+              color: #636b6f;
+              padding: 0 25px;
+              font-size: 13px;
+              font-weight: 600;
+              letter-spacing: .1rem;
+              text-decoration: none;
+              text-transform: uppercase;
+          }
+
+          .m-b-md {
+              margin-bottom: 0px;
+              font-size: 70px;
+          }
+
+          .m-b-md-2{
+              margin-bottom: 30px;
+              font-size: 40px;
+          }
+
+          .form-style-8 {
+              height: 150px;
+             width: 480px;
+             padding: 30px;
+             margin: -5px 20px 20px 0px;
+             <!-- CIMA | ESQUERDA | BAIXO | DIREITA -->
+
+             background: #FFFFFF;
+
+             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.35);
+             -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.35);
+             -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.35);
+           }
+
+           .form-style-8 h2 {
+              background: #636b6f;
+              text-transform: uppercase;
+              font-family: 'Nunito', sans-serif;
+              color: #fff;
+              font-size: 18px;
+              font-weight: 80;
+              padding: 20px;
+              margin: -30px -30px 30px -30px;
+            }
+
+            .form-style-8 h3 {
+              background: #636b6f;
+              text-transform: uppercase;
+              font-family: 'Nunito', sans-serif;
+              color: #fff;
+              font-size: 18px;
+              font-weight: 80;
+              padding: 20px;
+              margin: 0px -30px 30px -30px;
+             }
+
+             .form-style-8 a {
+               text-decoration: none;
+               color: #fff;
+             }
+
+            .form-style-8 input[type="text"],
+            .form-style-8 input[type="date"],
+            .form-style-8 input[type="datetime"],
+            .form-style-8 input[type="email"],
+            .form-style-8 input[type="number"],
+            .form-style-8 input[type="search"],
+            .form-style-8 input[type="time"],
+            .form-style-8 input[type="url"],
+            .form-style-8 input[type="password"],
+            .form-style-8 textarea,
+            .form-style-8 select
+            {
+               box-sizing: border-box;
+               -webkit-box-sizing: border-box;
+               -moz-box-sizing: border-box;
+               outline: none;
+               display: block;
+               width: 80%;
+               padding: 7px;
+               border: none;
+               border-bottom: 1px solid #ddd;
+               background: transparent;
+               margin-bottom: 10px;
+               font: 16px Arial, Helvetica, sans-serif;
+               height: 45px;
+             }
+
+             .form-style-8 button,
+             .form-style-8 input[type="button"],
+             .form-style-8 input[type="submit"],
+             .form-style-8 input[type="reset"]{
+               -moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+               -webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+               box-shadow: inset 0px 1px 0px 0px #45D6D6;
+               background-color: #2CBBBB;
+               border: 1px solid #27A0A0;
+               display: inline-block;
+               cursor: pointer;
+               color: #FFFFFF;
+               font-family: 'Open Sans Condensed', sans-serif;
+               font-size: 14px;
+               padding: 8px 18px;
+               text-decoration: none;
+               text-transform: uppercase;
+             }
+
+             .form-style-8 input[type="button"]:hover,
+             .form-style-8 input[type="submit"]:hover {
+             background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
+             background-color:#34CACA;
+           }
+
+      </style>
+  </head>
+
+  <body>
+    <div class="flex-center position-ref full-height">
+      <div class="content">
+        <div class="title m-b-md">
+          iReport Gerado!
+        </div>
+
+        <div class="title m-b-md-2">
+          Ruby on Rails
+        </div>
+
+<%
+    uri = URI('http://localhost:8080/ProjetoServlet/ServletReport')
+    enviaCodigo = Net::HTTP::Post.new(uri)
+    enviaCodigo.body = { }.to_json
+    res = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      http.request(enviaCodigo)
+    end
+%>
+<div class="form-style-8">
+  <h2> Home </h2>
+  <button>
+    <a href="../"> Home </a>
+  </button>
+  </body>
+</html>
